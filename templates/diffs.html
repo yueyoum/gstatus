@@ -1,0 +1,10 @@
+{% if error_msg %}
+    <h1>{{ error_msg }}</h1>
+{% else %}
+    {% for d in diffs %}
+        <div class="gstatus-one-diff">
+            <h2>{{ d.filename }}</h2>
+            <p>{{ d.content }}</p>
+        </div>
+    {% endfor %}
+{% endif %}

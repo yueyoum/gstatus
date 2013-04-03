@@ -1,0 +1,25 @@
+.gstatus-index-table {
+    margin: 0;
+}
+
+.gstatus-index-table td {
+    cursor: pointer;
+    text-align: right;
+}
+
+.gstatus-index-table p.gstatus-author {
+    font-size: 12px;
+}
+
+.gstatus-index-table p.gstatus-commit-log {
+    font-weight: bold;
+}
+
+.gstatus-one-diff {
+    margin: 0 20px 60px 20px;
+}
+
+#gstatus-commit-navbtn {
+    text-align: right;
+    padding: 0 20px 20px 20px;
+}

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block css %}
+    <link href="/static/css/gstatus.css" rel="stylesheet" media="screen">
+    <link href="/static/css/diffhighlight.css" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript">
+        $(function(){
+            $('.gstatus-index-table td').click(function(){
+                var commitid_new = $(this).attr('_commitid_new');
+                var commitid_old = $(this).attr('_commitid_old');
+                $("#gstatus-diff-area").empty();
+                $("#gstatus-diff-area").load('/commit/' + commitid_old + '/' + commitid_new);
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+{% if error_msg %}
+    <h1>{{ error_msg }}</h1>
+{% else %}
+
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span3">
+            <table class="table table-hover gstatus-index-table">
+
+                {% for commit in commits %}
+                <tr><td _commitid_new="{{ commit.id }}" _commitid_old="{{ commit.old_id }}">
+                    <p class="gstatus-author">{{ commit.date }}  {{ commit.author }}</p>
+                    <p class="gstatus-commit-log">{{ commit.log }}</p>
+                </td></tr>
+                {% endfor %}
+
+            </table>
+
+            <div id="gstatus-commit-navbtn">
+                {% if page > 0 %}
+                    <button class="btn" type="button">
+                    <a href="/page/{{ page-1 }}">previous</a>
+                    </button>
+                {% endif %}
+                    <button class="btn" type="button">
+                    <a href="/page/{{ page+1 }}">next</a>
+                    </button>
+            </div>
+            </div>
+
+            <div class="span9">
+                <div id="gstatus-diff-area"></div>
+            </div>
+        </div>
+    </div>
+
+{% endif %}
+{% endblock %}
