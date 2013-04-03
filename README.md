@@ -29,3 +29,7 @@ the follow two argument are required
 ## Screenshot
 
 ![gstatus](http://i1297.photobucket.com/albums/ag23/yueyoum/gg_zpsc3d3d43b.png)
+
+
+*	left bar shows the git commit info. contains date, author, and log
+*	click one git commit in left bar, the diff info will shown at the right area
