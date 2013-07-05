@@ -74,7 +74,7 @@ def diff_commit(commitid_old, commitid_new):
     out, err = run_subprocess(command)
 
     def diff_one_file(filename):
-        command = ['git', 'diff', commitid_old, commitid_new, filename]
+        command = ['git', 'diff', commitid_old, commitid_new, '--', filename]
         out, err = run_subprocess(command)
         c = StringIO.StringIO(out)
         for i in range(4):
